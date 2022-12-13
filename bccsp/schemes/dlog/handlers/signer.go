@@ -150,7 +150,6 @@ func (v *Verifier) Verify(k bccsp.Key, signature, digest []byte, opts bccsp.Sign
 	if len(signature) == 0 {
 		return false, errors.New("invalid signature, it must not be empty")
 	}
-
 	err := v.SignatureScheme.Verify(
 		issuerPublicKey.pk,
 		signature,
@@ -166,6 +165,5 @@ func (v *Verifier) Verify(k bccsp.Key, signature, digest []byte, opts bccsp.Sign
 	if err != nil {
 		return false, err
 	}
-
 	return true, nil
 }

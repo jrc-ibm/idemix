@@ -89,6 +89,7 @@ func (s *SignatureScheme) Sign(cred []byte, sk *math.Zr, Nym *math.G1, RNym *mat
 	return sigBytes, meta, nil
 }
 
+// AuditNymEid Audits the pseudonymous enrollment id of a signature
 func (s *SignatureScheme) AuditNymEid(
 	ipk handlers.IssuerPublicKey,
 	eidIndex int,
@@ -142,6 +143,7 @@ func (s *SignatureScheme) AuditNymEid(
 	}
 }
 
+// AuditNymRh Audits the pseudonymous revocation handle of a signature
 func (s *SignatureScheme) AuditNymRh(
 	ipk handlers.IssuerPublicKey,
 	rhIndex int,
@@ -223,7 +225,6 @@ func (s *SignatureScheme) Verify(
 	if err != nil {
 		return err
 	}
-
 	disclosure := make([]byte, len(attributes))
 	attrValues := make([]*math.Zr, len(attributes))
 	for i := 0; i < len(attributes); i++ {
